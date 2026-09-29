@@ -1,25 +1,26 @@
 Source: vyatta-protocols-common
-Section: contrib/net
+Section: net
 Priority: optional
-Maintainer: Vyatta Package Maintainers <DL-vyatta-help@att.com>
-Build-Depends:
- debhelper (>= 9.20160709),
+Maintainer: NuDanOS Maintainers <jon@fernandez.tech>
+Build-Depends: debhelper-compat (= 13),
  dh-exec,
  dh-golang,
  dh-python,
  dh-yang,
  golang-any,
-# Ensure required dependencies are also added to golang-vyatta-protocols-dev
  golang-github-danos-encoding-rfc7951-dev,
  golang-github-danos-vci-dev (>= 4.2),
  golang-github-hashicorp-go-multierror-dev,
  golang-github-sirupsen-logrus-dev,
  python3
-Standards-Version: 3.9.8
+Standards-Version: 4.7.2
+Rules-Requires-Root: no
+Vcs-Git: https://github.com/nudanos/vyatta-protocols-common.git
+Vcs-Browser: https://github.com/nudanos/vyatta-protocols-common
 
 Package: vyatta-protocols-common
 Architecture: any
-Depends:
+Depends: 
  python3,
  vyatta-cfg (>= 0.18.56),
  vyatta-interfaces,
@@ -28,7 +29,7 @@ Depends:
  ${misc:Depends},
  ${perl:Depends},
  ${shlibs:Depends}
-Suggests:
+Suggests: 
  ethtool,
  ncurses-bin (>= 5.5-5),
  net-tools,
@@ -115,7 +116,7 @@ Description: Vyatta "show ip|ipv6 route routing-instance" YANG module package
 
 Package: vyatta-policy-route-v1-yang
 Architecture: all
-Depends:
+Depends: 
  vyatta-cfg (>= 0.18.56),
  vyatta-policy-route-vci | vyatta-frr-vci,
  vyatta-system (>= 1.6.1),
@@ -129,7 +130,7 @@ Description: policy yang module package
 
 Package: vyatta-protocols-static-v1-yang
 Architecture: any
-Depends:
+Depends: 
  vyatta-rib-vci | vyatta-frr-vci,
  vyatta-static-arp,
  ${misc:Depends},
@@ -159,14 +160,12 @@ Description: routing-instance inter-vrf static route yang module package
 Package: vyatta-static-pbr-tables-feature
 Architecture: all
 Depends: vyatta-protocols-static-v1-yang, ${misc:Depends}
-Priority: optional
 Description: Vyatta feature for static PBR tables
  The feature flag for static PBR table support.
 
 Package: vyatta-static-pbr-tables-routing-instance-feature
 Architecture: all
 Depends: vyatta-protocols-static-routing-instance-v1-yang, ${misc:Depends}
-Priority: optional
 Description: Vyatta feature for static PBR tables in routing instances
  The feature flag for static PBR table support in routing instances.
 
@@ -247,14 +246,13 @@ Description: YANG modules for common RIPNG routing instance op commands
 
 Package: vyatta-static-arp
 Architecture: any
-Priority: optional
 Depends: iproute2, python3, ${misc:Depends}
 Description: static arp service
  Service for maintaining static arp configuration
 
 Package: golang-vyatta-protocols-dev
 Architecture: any
-Depends:
+Depends: 
  golang-github-danos-encoding-rfc7951-dev,
  golang-github-danos-vci-dev (>= 4.2),
  golang-github-hashicorp-go-multierror-dev,
