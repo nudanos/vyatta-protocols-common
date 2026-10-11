@@ -25,10 +25,10 @@ GO_BUILD_DIR = golang_build
 override_dh_auto_build: vet
 	dh_auto_build
 
-# We do not vet vendor code
+# NuDanOS: vet every Go package, vendored code included
 vet:
 	GOPATH=$(CURDIR)/$(GO_BUILD_DIR) go vet $$(find . -type f -name \*.go | \
-	xargs dirname | sort -u | grep -v "/vendor/");
+	xargs dirname | sort -u);
 
 override_dh_auto_configure:
 	dh_auto_configure
